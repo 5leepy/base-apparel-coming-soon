@@ -1,0 +1,111 @@
+// https://piccalil.li/blog/a-modern-css-reset
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+    height: 100%;
+}
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+$clr-primary-300:hsl(0, 36%, 70%);
+$clr-primary-500:hsl(0, 93%, 68%);
+$clr-neutral-900: hsl(0, 6%, 24%);
+
+$gradient-light:linear-gradient(135deg,hsl(0, 0%, 100%),to hsl(0, 100%, 98%));
+$gradient-dark:linear-gradient(135deg,hsl(0, 80%, 86%),to hsl(0, 74%, 74%));
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    @media (min-width:768px) {
+        background: url(/images/bg-pattern-desktop.svg) no-repeat center/cover;
+    }
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    .logo {
+        order: 1;
+        padding: 2rem;
+        img {
+            max-width: 6.25em;
+        }
+    }
+    .hero-content {
+        order: 3;
+        text-align: center;
+        padding: 0 2rem;
+        h1 {
+            text-transform: uppercase;
+            color: $clr-neutral-900;
+            font-weight:600;
+            font-size: 2.625rem;
+            letter-spacing: .625rem;
+            margin-top: 4.125rem;
+            margin-bottom: 1rem;
+            span {
+                font-weight: 300;
+                color: $clr-primary-300;
+            }
+        }
+        p {
+            color: $clr-primary-300;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+    }
+    .hero-img {
+        order: 2;
+    }
+}
