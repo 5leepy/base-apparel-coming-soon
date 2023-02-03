@@ -16,20 +16,26 @@
   <main>
     <article>
       <div class="logo">
-        <img src="/images/logo.svg" alt="Base Apparel Logo">
+        <div class="container">
+          <img src="/images/logo.svg" alt="Base Apparel Logo">
+        </div>
       </div>
       <div class="hero-content">
-        <h1><span>We're<br></span>coming<br>soon</h1>
-        <p>Hello fellow shoppers! We're currently building our new fashion store. 
-          Add your email below to stay up-to-date with announcements and our launch deals.</p>
-          <form>
-            <div>
-              <input type="email" name="email" id="email" placeholder="Email Address" required>
-              <label for="email"><img src="/images/icon-error.svg" alt=""></label>
-              <button type="submit"><img src="/images/icon-arrow.svg" alt=""></button>
-            </div>
-            <p class="error">Please provide a valid email</p>
-          </form>
+        <div class="container">
+          <h1><span>We're<br></span>coming<br>soon</h1>
+          <p>Hello fellow shoppers! We're currently building our new fashion store. 
+            Add your email below to stay up-to-date with announcements and our launch deals.</p>
+            <form autocomplete="off">
+              <div>
+                <input type="email" name="email" id="email" placeholder="Email Address" required>
+                <label for="email"><img src="/images/icon-error.svg" alt="" id="error-img"></label>
+                <button class="button" type="submit" id="submit">
+                    <img src="/images/icon-arrow.svg" alt="">
+                </button>
+              </div>
+              <p class="error" id="error-message">Please provide a valid email</p>
+            </form>
+        </div>
       </div>
       <div class="hero-img">
           <picture>
@@ -40,4 +46,5 @@
     </article>
   </main>
 </body>
+<script src="/js/main.js"></script>
 </html>

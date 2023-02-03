@@ -1,98 +1,33 @@
-// https://piccalil.li/blog/a-modern-css-reset
+@use "globals" as *;
 
-/* Box sizing rules */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Remove default margin */
-* {
-    margin: 0;
-    padding: 0;
-    font: inherit;
-}
-
-/* Set core root defaults */
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-html,
-body {
-    height: 100%;
-}
-/* Set core body defaults */
-body {
-  text-rendering: optimizeSpeed;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
-/* Make images easier to work with */
-img,
-picture,
-svg {
-  max-width: 100%;
-  display: block;
-}
-
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-   scroll-behavior: auto;
-  }
-  
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-$clr-primary-300:hsl(0, 36%, 70%);
-$clr-primary-500:hsl(0, 93%, 68%);
-$clr-neutral-900: hsl(0, 6%, 24%);
-
-$gradient-light:linear-gradient(135deg,hsl(0, 0%, 100%),to hsl(0, 100%, 98%));
-$gradient-dark:linear-gradient(135deg,hsl(0, 80%, 86%),to hsl(0, 74%, 74%));
 
 body {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 16px;
-    @media (min-width:768px) {
-        background: url(/images/bg-pattern-desktop.svg) no-repeat center/cover;
-    }
 }
-
+.container {
+  margin: 0 em(32px);
+}
 article {
     display: flex;
     flex-direction: column;
     .logo {
         order: 1;
-        padding: 2rem;
+        margin: em(32px) 0;
         img {
-            max-width: 6.25em;
+            max-width: em(100px);
         }
     }
     .hero-content {
         order: 3;
         text-align: center;
-        padding: 0 2rem;
         h1 {
             text-transform: uppercase;
             color: $clr-neutral-900;
             font-weight:600;
-            font-size: 2.625rem;
-            letter-spacing: .625rem;
-            margin-top: 4.125rem;
+            font-size: rem(42px);
+            letter-spacing: rem(10px);
+            margin-top: rem(66px);
             margin-bottom: 1rem;
             span {
                 font-weight: 300;
@@ -100,12 +35,129 @@ article {
             }
         }
         p {
-            color: $clr-primary-300;
-            font-size: 0.875rem;
-            line-height: 1.6;
+            color: $clr-primary-500;
+            font-size: rem(14px);
+            margin-top: rem(10px);
+            display: none;
+            &:not(.error) {
+              display: block;
+              color: $clr-primary-300;
+              line-height: 1.6;
+              margin-bottom: rem(32px);
+            }
+        }
+        form {
+          position: relative;
+          margin-bottom: em(90px);
+          input {
+            width: 100%;
+            border: $clr-primary-300 solid 1px;
+            padding: rem(15px) rem(24px);
+            border-radius: 2em;
+            outline: none;
+            &::placeholder {
+              font-size: rem(14px);
+              color: lighten($clr-primary-300, 10%);
+            }
+            &:focus {
+              border: $clr-primary-500 solid 1px;
+            }
+          }
+          .button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: none;
+            background-image: linear-gradient(135deg,hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+            padding: rem(15px) rem(26px);
+            border-radius: rem(24px);
+            transition: 0.3s ease-in-out;
+            box-shadow: rgba(0, 0, 0, 0.10) 0px 12px 13px, rgba(0, 0, 0, 0.05) 0px -3px 5px;
+            outline: none;
+            cursor: pointer;
+            &:hover {
+              background-image: (135deg,hsl(0, 0%, 100%),to hsl(0, 100%, 98%));
+            }
+          }
+          label {
+            img {
+              display: none;
+              position: absolute;
+              top: 16%;
+              right: 23%;
+            }
+          }
         }
     }
     .hero-img {
+
         order: 2;
     }
+}
+
+@media (min-width:em(768px)) {
+  body {
+    background: url(/images/bg-pattern-desktop.svg) no-repeat center/cover;  
+  }
+  .container {
+    margin: 0 em(220px) 0 em(165px);
+  }
+  article {
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+    .logo .hero-content{
+      grid-column: 1 / 2;
+    }
+    .hero-img {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+      img {
+        max-height: 100vh;
+        max-width: none;
+      }
+    }
+    .logo {
+      margin: em(66px) 0 0;
+      img {
+        max-width: em(158px);
+      }
+    }
+    .hero-content {
+      text-align: start;
+      h1 {
+        font-size: rem(62px);
+        letter-spacing: rem(20px);
+        line-height: 1.1;
+        margin-top: rem(76px);
+        margin-bottom: rem(19px);
+      }
+      p{
+        font-size: rem(16px);
+        margin-left: rem(34px);
+        &:not(.error) {
+          margin-left: 0;
+          line-height: 1.7;
+          margin-bottom: rem(40px);
+        }
+      }
+      form {
+        input {
+          padding: rem(19px) rem(34px);
+          &::placeholder {
+            font-size: rem(16px);
+          }
+        }
+        .button {
+          padding: rem(19px) rem(44px);
+          border-radius: 2rem;
+        }
+        label {
+          img {
+            top: 20%;
+            right: 26%;
+          }
+        }
+      }
+    }
+  }
 }

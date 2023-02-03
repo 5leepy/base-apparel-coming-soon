@@ -61,10 +61,9 @@ body {
   font-family: "Josefin Sans", sans-serif;
   font-size: 16px;
 }
-@media (min-width: 768px) {
-  body {
-    background: url(/images/bg-pattern-desktop.svg) no-repeat center/cover;
-  }
+
+.container {
+  margin: 0 2em;
 }
 
 article {
@@ -73,7 +72,7 @@ article {
 }
 article .logo {
   order: 1;
-  padding: 2rem;
+  margin: 2em 0;
 }
 article .logo img {
   max-width: 6.25em;
@@ -81,7 +80,6 @@ article .logo img {
 article .hero-content {
   order: 3;
   text-align: center;
-  padding: 0 2rem;
 }
 article .hero-content h1 {
   text-transform: uppercase;
@@ -97,10 +95,134 @@ article .hero-content h1 span {
   color: hsl(0deg, 36%, 70%);
 }
 article .hero-content p {
-  color: hsl(0deg, 36%, 70%);
+  color: hsl(0deg, 93%, 68%);
   font-size: 0.875rem;
+  margin-top: 0.625rem;
+  display: none;
+}
+article .hero-content p:not(.error) {
+  display: block;
+  color: hsl(0deg, 36%, 70%);
   line-height: 1.6;
+  margin-bottom: 2rem;
+}
+article .hero-content form {
+  position: relative;
+  margin-bottom: 5.625em;
+}
+article .hero-content form input {
+  width: 100%;
+  border: hsl(0deg, 36%, 70%) solid 1px;
+  padding: 0.9375rem 1.5rem;
+  border-radius: 2em;
+  outline: none;
+}
+article .hero-content form input::-moz-placeholder {
+  font-size: 0.875rem;
+  color: #debaba;
+}
+article .hero-content form input:-ms-input-placeholder {
+  font-size: 0.875rem;
+  color: #debaba;
+}
+article .hero-content form input::placeholder {
+  font-size: 0.875rem;
+  color: #debaba;
+}
+article .hero-content form input:focus {
+  border: hsl(0deg, 93%, 68%) solid 1px;
+}
+article .hero-content form .button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  background-image: linear-gradient(135deg, hsl(0deg, 80%, 86%), hsl(0deg, 74%, 74%));
+  padding: 0.9375rem 1.625rem;
+  border-radius: 1.5rem;
+  transition: 0.3s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 12px 13px, rgba(0, 0, 0, 0.05) 0px -3px 5px;
+  outline: none;
+  cursor: pointer;
+}
+article .hero-content form .button:hover {
+  background-image: 135deg, hsl(0deg, 0%, 100%), to hsl(0deg, 100%, 98%);
+}
+article .hero-content form label img {
+  display: none;
+  position: absolute;
+  top: 16%;
+  right: 23%;
 }
 article .hero-img {
   order: 2;
+}
+
+@media (min-width: 48em) {
+  body {
+    background: url(/images/bg-pattern-desktop.svg) no-repeat center/cover;
+  }
+  .container {
+    margin: 0 13.75em 0 10.3125em;
+  }
+  article {
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+  }
+  article .logo .hero-content {
+    grid-column: 1/2;
+  }
+  article .hero-img {
+    grid-column: 2/3;
+    grid-row: 1/3;
+  }
+  article .hero-img img {
+    max-height: 100vh;
+    max-width: none;
+  }
+  article .logo {
+    margin: 4.125em 0 0;
+  }
+  article .logo img {
+    max-width: 9.875em;
+  }
+  article .hero-content {
+    text-align: start;
+  }
+  article .hero-content h1 {
+    font-size: 3.875rem;
+    letter-spacing: 1.25rem;
+    line-height: 1.1;
+    margin-top: 4.75rem;
+    margin-bottom: 1.1875rem;
+  }
+  article .hero-content p {
+    font-size: 1rem;
+    margin-left: 2.125rem;
+  }
+  article .hero-content p:not(.error) {
+    margin-left: 0;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+  article .hero-content form input {
+    padding: 1.1875rem 2.125rem;
+  }
+  article .hero-content form input::-moz-placeholder {
+    font-size: 1rem;
+  }
+  article .hero-content form input:-ms-input-placeholder {
+    font-size: 1rem;
+  }
+  article .hero-content form input::placeholder {
+    font-size: 1rem;
+  }
+  article .hero-content form .button {
+    padding: 1.1875rem 2.75rem;
+    border-radius: 2rem;
+  }
+  article .hero-content form label img {
+    top: 20%;
+    right: 26%;
+  }
 }/*# sourceMappingURL=styles.css.map */
